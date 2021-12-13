@@ -21,7 +21,8 @@ body{
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: var(--bright-red);
+    background-color: rgba(0,0,0,0.6);
+    background-blend-mode: soft-light;
     background-image: url("https://i2.wp.com/www.brandtimes.com.ng/wp-content/uploads/2016/12/31.jpg?fit=1280%2C853&ssl=1");
     font-family: 'Poppins',sans-serif;
     background-size: cover;
@@ -30,19 +31,9 @@ body{
     background-repeat: no-repeat;
 }
 
-body::before {
-    content: "";
-    position: absolute;
-    background-color: rgba(0,0,0,0.5);
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-}
-
 .shopping {
     color: var(--snow);
+    text-align: center;
 }
 
 input[type="checkbox"] {
@@ -64,6 +55,7 @@ label {
     width: 100%;
     text-align: left;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .container{
@@ -73,14 +65,14 @@ label {
     color: var(--gray);
 
 }
-#newtask{
+#checklist{
     position: relative;
     background-color: #ffffff;
     padding: 30px 20px;
     border-radius: 5px;
     box-shadow: 0 15px 30px rgba(0,0,0,0.3);
 }
-#newtask input{
+#checklist input{
     width: 70%;
     width: 70%;
     height: 45px;
@@ -92,12 +84,12 @@ label {
     position: relative;
     border-radius: 5px;
 }
-#newtask input:focus{
+#checklist input:focus{
     outline: none;
     border-color: var(--bright-red);
 }
 
-#newtask button{
+#checklist button{
     position: relative;
     float: right;
     width: 20%;
@@ -111,7 +103,7 @@ label {
     cursor: pointer;
     outline: none;
 }
-#tasks{
+#lists{
     background-color: #ffffff;
     padding: 30px 20px;
     margin-top: 60px;
@@ -120,7 +112,7 @@ label {
     width: 100%;
     position: relative;
 }
-.task{
+.lists{
     background-color: #ffffff;
     height: 50px;
     padding: 5px 10px;
@@ -132,7 +124,7 @@ label {
     cursor: pointer;
 }
 
-.task button{
+.lists button{
     background-color: var(--bright-red);
     color: #ffffff;
     height: 100%;
@@ -142,9 +134,9 @@ label {
     cursor: pointer;
     outline: none;
 }
-.completed{
+
+input[type=checkbox]:checked + label {
     text-decoration: line-through;
     font-weight: normal;
     color: #c4c1c1
-
 }

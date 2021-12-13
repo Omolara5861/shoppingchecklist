@@ -1,35 +1,61 @@
-document.querySelector('#push').onclick = function(){
-    if(document.querySelector('#newtask input').value.length == 0){
-        alert("Please Enter a Task")
-    }
-    else{
-        document.querySelector('#tasks').innerHTML += `
-            <div class="task">
-                <span id="taskname">
-                <input type="checkbox"> 
-                <label>${document.querySelector('#newtask input').value}
-                </label>
+let items = ["A Car", "Decorations", "Some Clothes"];
+const checklist = document.getElementById("lists");
+const addList = document.getElementById("push");
+const newItem = document.querySelector('#checklist input');
+
+// Task:
+// - For each item in the items array, create a div with a class of "checklist-item", which contains a checkbox input and corresponding label.
+
+function displayItems() {
+    checklist.innerHTML = "";
+    for (let i = 0; i < items.length; i++) {
+        checklist.innerHTML += `
+        <div class="checklist-item lists">
+                <span id="listname">
+                <input type="checkbox" id="${i}"> 
+                <label for="${i}">${items[i]}</label>
                 </span>
-                <button class="delete">
+                <button class="delete" onclick="deleteItem(${i})">
                     <i class="far fa-trash-alt"></i>
                 </button>
             </div>
         `;
-
-        var current_tasks = document.querySelectorAll(".delete");
-        for(var i=0; i<current_tasks.length; i++){
-            current_tasks[i].onclick = function(){
-                this.parentNode.remove();
-            }
-        }
-
-        var tasks = document.querySelectorAll(".task");
-        for(var i=0; i<tasks.length; i++){
-            tasks[i].onclick = function(){
-                this.classList.toggle('completed');
-            }
-        }
-
-        document.querySelector("#newtask input").value = "";
+    }
+    if(checklist.innerHTML === "") {
+        checklist.innerHTML = "<p>Your Shopping List is Currently Empty, click the add button to add new list items :)</p>";
     }
 }
+displayItems();
+
+
+// - Make sure that the shopping list can render a checkbox for all the items, even if new items are added to the items array.
+
+
+/* 
+Implemented this goal through CSS already
+
+*/
+
+
+// Stretch goals:
+
+// - Add an input which allows the user to add more items.
+addList.addEventListener('click', () => {
+    if (newItem.value === "") {
+        alert("Please Enter an Item");
+    }
+    else {
+        items.push(newItem.value);
+        newItem.value = "";
+        displayItems();
+    }
+});
+
+// - Add a delete button for the items.
+function deleteItem(j) {
+    items.splice(j, 1);
+    displayItems();
+}
+
+
+
